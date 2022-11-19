@@ -29,7 +29,7 @@ test("popover responds to hover", async () => {
     /I agree to Terms and Conditions/i
   );
   await user.hover(termsAndConditions);
-  const popover = screen.getByPlaceholderText(/no ice cream/i);
+  const popover = screen.getByPlaceholderText("no ice cream");
   expect(popover).toBeInTheDocument();
   //popover disable when mouse goes out
 
