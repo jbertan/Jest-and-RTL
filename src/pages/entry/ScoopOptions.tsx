@@ -6,7 +6,7 @@ interface data {
 const ScoopOptions = ({ name, imagePath }: data) => {
   return (
     <div className="flex justify-center items-center">
-      <img src={`http://localhost:3030/${imagePath}`} alt={`${name} scoop}`} />
+      <img src={`http://localhost:3030/${imagePath}`} alt={`${name} scoop`} />
     </div>
   );
 };

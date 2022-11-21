@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import ScoopOptions from "./ScoopOptions";
+import ToppingOptions from "./ToppingOptions";
+import axios from "axios";
 interface dataOptions {
-  optionType: "scoops" | "tooping";
+  optionType: "scoops" | "toppings";
 }
 interface itemIndex {
   name: string;
@@ -11,7 +13,8 @@ interface itemIndex {
 const Options = ({ optionType }: dataOptions) => {
   const [items, setItems] = useState<itemIndex[]>([]);
   useEffect(() => {
-    fetch(`http://localhost:3030/${optionType}`)
+    axios
+      .get(`http://localhost:3030/${optionType}`)
       .then((response: any) => setItems(response.data))
       .catch((error: any) => {
         console.log(error);
@@ -20,7 +23,7 @@ const Options = ({ optionType }: dataOptions) => {
 
   //null will be topping option
   //const ItemComponent = optionType === "scoops" ? ScoopOptions : null;
-  const ItemComponent = ScoopOptions;
+  const ItemComponent = optionType === "scoops" ? ScoopOptions : ToppingOptions;
   const optionItems = items.map((item) => (
     <ItemComponent
       key={item.name}
